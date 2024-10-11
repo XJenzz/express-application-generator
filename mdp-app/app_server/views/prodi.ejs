@@ -1,0 +1,20 @@
+  <div class = "container">
+  <h1>Program Studi</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nama Prodi</th>
+                <th scope="col">Fakultas</th>
+                <th scope="col">Singkatan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% prodi.forEach(data => { %>
+                <tr class =>
+                    <td><%= data.prodi %></td>
+                    <td><%= data.fakultas %></td>
+                    <td><%= data.singkatan %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
