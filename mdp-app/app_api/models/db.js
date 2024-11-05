@@ -7,6 +7,7 @@ const connectDB = async () => {
             // "mongodb://localhost:27017/mdpdb"
         );
 
+        
         console.log("MongoDB Connected...");
     } catch (error) {
         console.error("MongoDB connection error: ", error);
