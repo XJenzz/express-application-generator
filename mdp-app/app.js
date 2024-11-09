@@ -7,9 +7,11 @@ const expressLayout = require('express-ejs-layouts'); // impor modul express-ejs
 const connectDB = require("./app_api/models/db")
 
 var indexRouter = require('./app_server/routes/index');
+const fakultasRouter = require('./app_server/routes/fakultas')
 var usersRouter = require('./app_server/routes/users');
 var prodiRouter = require('./app_server/routes/prodi');
-const fakultasRouter = require('./app_api/routes/fakultas');
+
+const fakultasRouterApi = require('./app_api/routes/fakultas');
 const prodiRouterApi = require('./app_api/routes/prodi');
 
 var app = express();
@@ -26,9 +28,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayout);
 
 app.use('/', indexRouter);
+app.use('/fakultas', fakultasRouter);
 app.use('/users', usersRouter);
 app.use('/prodi', prodiRouter);
-app.use('/api/fakultas', fakultasRouter);
+
+app.use('/api/fakultas', fakultasRouterApi);
 app.use('/api/prodi', prodiRouterApi);
 
 
