@@ -4,16 +4,20 @@
         <thead>
             <tr>
                 <th scope="col">Nama Prodi</th>
-                <th scope="col">Fakultas</th>
                 <th scope="col">Singkatan</th>
+                <th scope="col">Fakultas</th>
             </tr>
         </thead>
         <tbody>
             <% prodi.forEach(data => { %>
                 <tr class =>
                     <td><%= data.prodi %></td>
-                    <td><%= data.fakultas %></td>
                     <td><%= data.singkatan %></td>
+                    <td>
+                        <%= data.fakultas_id && data.fakultas_id.nama ? data.
+                        fakultas_id.nama :
+                        'Belum ada fakultas' %>
+                    </td>
                 </tr>
             <% }) %>
         </tbody>
