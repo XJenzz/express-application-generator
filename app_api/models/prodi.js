@@ -13,7 +13,7 @@ const prodiSchema = new mongoose.Schema({// Definisikan skema untuk fakultas
     },
     fakultas_id: {// Field untuk singkatan fakultas
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Fakultas", // Field ini wajib diisi
+        ref: "Fakultas", // Field ini wajib diisi   
         required: true, // Menghapus spasi di awal dan akhir string
     },
     createdAt: {// Field untuk menyimpan tanggal pembuatan data fakultas
