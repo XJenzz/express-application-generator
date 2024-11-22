@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({// Definisikan skema untuk fakultas
 });
 
 // Fungsi untuk mengenkripsi password sebelum menyimpan pengguna
-userSchema.pre("Save", async function (next){
+userSchema.pre("save", async function (next){
     if (!this.isModified("password")) {
         // Jika password tidak diubah, dilanjutkan tanpa meng-enkripsi ulang    
         return next();
