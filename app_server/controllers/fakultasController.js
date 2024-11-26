@@ -5,8 +5,8 @@ const index = async (req, res) => {
     try {
         // Mendapatkan data fakultas dari API external
         const response = await axios.get(
-            // "https://express-application-generator-4ksl.vercel.app/api/fakultas"
-            "http://localhost:3000/api/fakultas"
+            "https://express-application-generator.vercel.app/api/fakultas"
+            // "http://localhost:3000/api/fakultas"
         );
 
         // Data fakultas dari API
@@ -15,7 +15,7 @@ const index = async (req, res) => {
         // Render halaman 'fakultas' dengan data yang diperoleh dari API
         res.render("fakultas", {
             title: "Halaman Fakultas",
-            fakultas: fakultas,
+            fakultas,
             layout: "main",
         });
     } catch (error) {

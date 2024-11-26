@@ -5,8 +5,8 @@ const index = async (req, res) => {
     try {
         // Mendapatkan data prodi dari API external
         const response = await axios.get(
-            // "https://express-application-generator-4ksl.vercel.app/api/prodi"
-            "http://localhost:3000/api/prodi"
+            "https://express-application-generator.vercel.app/api/prodi"
+            // "http://localhost:3000/api/prodi"
         );
 
         // Data prodi dari API
