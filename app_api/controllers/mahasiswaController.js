@@ -6,7 +6,7 @@ const fs = require("fs");
 
 // Fungsi untuk menambahkan data mahasiswa baru
 exports.createMahasiswa = async (req, res) => {
-  const { npm, nama, prodi_id, jenis_kelamin, asal_sekolah } = req.body; // Destructurisasi data dari body request
+  const { npm, nama, prodi_id, jenis_kelamin, asal_sekolah } = req.body; // Destrukturisasi data dari body request
 
   if (!req.file) {
     // Validasi jika file foto tidak ada
@@ -51,9 +51,8 @@ exports.getMahasiswaById = async (req, res) => {
       "prodi_id",
       "nama"
     ); // Mengambil data mahasiswa berdasarkan ID dan relasi Prodi
-    if (!mahasiswa) {
+    if (!mahasiswa)
       return res.status(404).json({ message: "Mahasiswa not found" }); // Jika mahasiswa tidak ditemukan
-    }
     res.json(mahasiswa); // Mengembalikan data mahasiswa
   } catch (error) {
     res.status(500).json({ message: error.message }); // Menangani error
@@ -62,16 +61,15 @@ exports.getMahasiswaById = async (req, res) => {
 
 // Fungsi untuk memperbarui data mahasiswa
 exports.updateMahasiswa = async (req, res) => {
-  const { npm, nama, prodi_id, jenis_kelamin, asal_sekolah } = req.body; // Destructurisasi data dari body request
+  const { npm, nama, prodi_id, jenis_kelamin, asal_sekolah } = req.body; // Destrukturisasi data dari body request
 
   try {
     const mahasiswa = await Mahasiswa.findById(req.params.id); // Mencari mahasiswa berdasarkan ID
-    if (!mahasiswa) {
+    if (!mahasiswa)
       return res.status(404).json({ message: "Mahasiswa not found" }); // Jika mahasiswa tidak ditemukan
-    }
 
     if (req.file) {
-      // jika ada file foto baru
+      // Jika ada file foto baru
       if (mahasiswa.foto) {
         // Hapus foto lama jika ada
         fs.unlinkSync(path.join(__dirname, "../", mahasiswa.foto));
@@ -97,13 +95,14 @@ exports.updateMahasiswa = async (req, res) => {
 exports.deleteMahasiswa = async (req, res) => {
   try {
     const mahasiswa = await Mahasiswa.findByIdAndDelete(req.params.id); // Menghapus mahasiswa berdasarkan ID
-    if (!mahasiswa) {
+    if (!mahasiswa)
       return res.status(404).json({ message: "Mahasiswa not found" }); // Jika mahasiswa tidak ditemukan
-    }
+
     if (mahasiswa.foto) {
       // Jika ada file foto, hapus file tersebut
       fs.unlinkSync(path.join(__dirname, "../", mahasiswa.foto));
     }
+
     res.json({ message: "Mahasiswa deleted successfully" }); // Mengembalikan respon sukses
   } catch (error) {
     res.status(500).json({ message: error.message }); // Menangani error

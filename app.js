@@ -14,7 +14,7 @@ var prodiRouter = require('./app_server/routes/prodi');
 const fakultasRouterApi = require('./app_api/routes/fakultas');
 const prodiRouterApi = require('./app_api/routes/prodi');
 const authRouterApi = require('./app_api/routes/auth');
-const mahasiswaRouterApi = require('./app_api/routes/mahasiswa');
+// const mahasiswaRouterApi = require('./app_api/routes/mahasiswa');
 
 require("dotenv").config(); // load environment variables
 
@@ -23,6 +23,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'ejs');
+app.set('layout', 'main'); // Menetapkan main.ejs sebagai layout default
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -39,7 +40,7 @@ app.use('/prodi', prodiRouter);
 app.use('/api/fakultas', fakultasRouterApi);
 app.use('/api/prodi', prodiRouterApi);
 app.use('/api/auth', authRouterApi);
-app.use('/api/mahasiswa', mahasiswaRouterApi);
+// app.use('/api/mahasiswa', mahasiswaRouterApi);
 
 
 // Connect to MongoDB

@@ -11,11 +11,10 @@
         <tbody>
             <% prodi.forEach(data => { %>
                 <tr class =>
-                    <td><%= data.prodi %></td>
+                    <td><%= data.nama %></td>
                     <td><%= data.singkatan %></td>
                     <td>
-                        <%= data.fakultas_id && data.fakultas_id.nama ? data.
-                        fakultas_id.nama :
+                        <%= data.fakultas_id && data.fakultas_id.nama ? data.fakultas_id.nama :
                         'Belum ada fakultas' %>
                     </td>
                 </tr>

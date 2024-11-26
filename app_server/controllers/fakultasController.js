@@ -5,8 +5,8 @@ const index = async (req, res) => {
     try {
         // Mendapatkan data fakultas dari API external
         const response = await axios.get(
-            "https://express-application-generator-4ksl.vercel.app/api/fakultas"
-            // "http://localhost:3000/api/fakultas"
+            // "https://express-application-generator-4ksl.vercel.app/api/fakultas"
+            "http://localhost:3000/api/fakultas"
         );
 
         // Data fakultas dari API
@@ -24,5 +24,29 @@ const index = async (req, res) => {
         res.status(500).send("Gagal mendapatkan data fakultas dari API");
     }
 };
+
+// const store = async (req, res) => {
+//     const { nama, singkatan } = req.body;
+//     try {
+//       const response = await fetch(
+//         "https://express-application-generator-4ksl.vercel.app/api/fakultas",
+//         {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({ nama, singkatan }),
+//         }
+//       );
+  
+//       if (response.ok) {
+//         res.redirect("/fakultas"); // Redirect ke halaman fakultas setelah berhasil menambah
+//       } else {
+//         res.status(500).send("Gagal menambahkan data fakultas.");
+//       }
+//     } catch (error) {
+//       res.status(500).send("Error menambahkan data fakultas");
+//     }
+//   };
 
 module.exports = { index };

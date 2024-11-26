@@ -1,38 +1,28 @@
-const index = (req,res) => {
-    const prodi = [
-        {
-            prodi : 'Sistem Informasi',
-            fakultas : 'FIKR',
-            singkatan :'SI'
-        },
-        {
-            prodi : 'Informatika',
-            fakultas : 'FIKR',
-            singkatan :'IF'
-        },
-        {
-            prodi : 'Teknik Elektro',
-            fakultas : 'FIKR',
-            singkatan :'TE'
-        },
-        {
-            prodi : 'Manajemen Informatika',
-            fakultas : 'FIKR',
-            singkatan :'MI'
-        },
-        {
-            prodi : 'Manajemen',
-            fakultas : 'FEB',
-            singkatan :'MJ'
-        },
-        {
-            prodi : 'Akuntansi',
-            fakultas : 'FEB',
-            singkatan :'AK'
-        }
-    ];
+// Mengimpor axios untuk melakukan HTTP request
+const axios = require("axios");
 
-    res.render('prodi',  {title : 'Halaman Prodi', prodi , layout : 'main'});
+const index = async (req, res) => {
+    try {
+        // Mendapatkan data prodi dari API external
+        const response = await axios.get(
+            // "https://express-application-generator-4ksl.vercel.app/api/prodi"
+            "http://localhost:3000/api/prodi"
+        );
+
+        // Data prodi dari API
+        const prodi = response.data;
+
+        // Render halaman 'prodi' dengan data yang diperoleh dari API
+        res.render("prodi", {
+            title: "Halaman Program Studi",
+            prodi,
+            layout: "main",
+        });
+    } catch (error) {
+        // Menangani kesalahan saat mengambil data dari API
+        console.error(error.message);
+        res.status(500).send("Gagal mendapatkan data program studi dari API");
+    }
 };
 
-module.exports = {index}
+module.exports = { index };
